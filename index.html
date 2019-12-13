@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Js</title>
+</head>
+<body>
+	<input style="width: 209px;text-align: right;" type = "text" name = "test" id="test" value = 0 disabled>
+	<p></p>
+	<button style="width: 50px" onclick="testando.texto('test', 7)">7</button>
+	<button style="width: 50px" onclick="testando.texto('test', 8)">8</button>
+	<button style="width: 50px" onclick="testando.texto('test', 9)">9</button>
+	<button style="width: 50px">+</button>
+	<p></p>
+	<button style="width: 50px" onclick="testando.texto('test', 4)">4</button>
+	<button style="width: 50px" onclick="testando.texto('test', 5)">5</button>
+	<button style="width: 50px" onclick="testando.texto('test', 6)">6</button>
+	<button style="width: 50px">-</button>
+	<p></p>
+	<button style="width: 50px" onclick="testando.texto('test', 1)">1</button>
+	<button style="width: 50px" onclick="testando.texto('test', 2)">2</button>
+	<button style="width: 50px" onclick="testando.texto('test', 3)">3</button>
+	<button style="width: 50px">*</button>
+	<p></p>
+	<button style="width: 50px" onclick="testando.texto('test', 0)">0</button>
+	<button style="width: 104px">=</button>
+	<button style="width: 50px">/</button>
+
+	<p></p>
+	<p></p>
+	<button onclick="testando.atual == 1 ? testando.atual = 2 : testando.atual = 1">atual</button>
+	<button onclick="testando.destroy();document.getElementById('test').value = 0">destroy</button>
+
+</body>
+	<script type = "text/javascript">
+
+		class Calculadora{
+			constructor(){
+				this.valor = 0;
+				this.valor2 = 0;
+				this.atual = 1;
+			}
+			destroy(){
+				this.valor = 0;
+				this.valor2 = 0;
+				this.atual = 1;
+			}
+
+			primeiroValor(code, value){
+				let aux = this.valor;
+				if (aux == 0) {
+					aux = value;
+				}else{
+					aux = "" + aux + value;
+				}
+				this.valor = parseInt(aux);
+				document.getElementById(code).value = this.valor;
+			}
+
+			segundoValor(code, value){
+				let aux = this.valor2;
+				if (aux == 0) {
+					aux = value;
+				}else{
+					aux = "" + aux + value;
+				}
+				testando.valor2 = parseInt(aux);
+				document.getElementById(code).value = this.valor2;
+			}
+
+			texto(code, value){
+				if (this.atual == 1) {
+					valor1(code, value);
+				}else{
+					valor2(code, value);
+				}
+			}
+		}
+		testando = new Calculadora();
+
+		function valor1(code, value) {
+			let aux = testando.valor;
+			if (aux == 0) {
+				aux = value;
+			}else{
+				aux = "" + aux + value;
+			}
+			testando.valor = parseInt(aux);
+			document.getElementById(code).value = testando.valor;
+		}
+
+		function valor2(code, value){
+			let aux = testando.valor2;
+			if (aux == 0) {
+				aux = value;
+			}else{
+				aux = "" + aux + value;
+			}
+			testando.valor2 = parseInt(aux);
+			document.getElementById(code).value = testando.valor2;
+		}
+
+		function texto(code, value){
+			if (testando.atual == 1) {
+				valor1(code, value);
+			}else{
+				valor2(code, value);
+			}
+		}
+
+	</script>
+</html>
