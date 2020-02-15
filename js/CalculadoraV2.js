@@ -30,11 +30,13 @@ class CalculadoraV2 {
           this.minusOp();
           break;
         case '+':
-          this.plusOp();
+          this.sumOp();
           break;
         case '*':
+          this.multiplyOp();
           break;
         case '/':
+          this.divisionOp();
           break;
         case '.':
           break;
@@ -72,23 +74,23 @@ class CalculadoraV2 {
   }
 
   minusOp() {
-    if (this.isNull(this.op)) {
-      this.op = '-';
-      this.exchangeValues();
-    } else {
-      this.value = this.getAux() - this.getValue();
-      this.aux = '';
-    }
+    this.value = this.getAux() - this.getValue();
+    this.aux = '';
   }
 
-  plusOp() {
-    if (this.isNull(this.op)) {
-      this.op = '+';
-      this.exchangeValues();
-    } else {
-      this.value = this.getAux() + this.getValue();
-      this.aux = '';
-    }
+  sumOp() {
+    this.value = this.getAux() + this.getValue();
+    this.aux = '';
+  }
+
+  multiplyOp() {
+    this.value = this.getAux() * this.getValue();
+    this.aux = '';
+  }
+
+  divisionOp() {
+    this.value = this.getAux() / this.getValue();
+    this.aux = '';
   }
 
   /**
@@ -136,9 +138,11 @@ class CalculadoraV2 {
   isOperation() {
     const check = this.getEventValue();
     return check == '+'
-    || check == '-'
-    || check == '/'
-    || check == '*';
+      || check == '-'
+      || check == '/'
+      || check == '*'
+      || check == '='
+      || check == '.';
   }
 
 }
