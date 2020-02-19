@@ -1,38 +1,72 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="./js/Calculadora.js"></script>
+	<script type="text/javascript" src="./js/CalculadoraV2.js"></script>
 	<title>Js</title>
 </head>
-<body>
-	<input style="width: 209px;text-align: right;" type = "text" name = "test" id="test" value = 0 disabled>
-	<p></p>
-	<button style="width: 50px" onclick="testando.texto('test', 7)">7</button>
-	<button style="width: 50px" onclick="testando.texto('test', 8)">8</button>
-	<button style="width: 50px" onclick="testando.texto('test', 9)">9</button>
-	<button style="width: 50px" onclick="testando.operation('test', '+')">+</button>
-	<p></p>
-	<button style="width: 50px" onclick="testando.texto('test', 4)">4</button>
-	<button style="width: 50px" onclick="testando.texto('test', 5)">5</button>
-	<button style="width: 50px" onclick="testando.texto('test', 6)">6</button>
-	<button style="width: 50px" onclick="testando.operation('test', '-')">-</button>
-	<p></p>
-	<button style="width: 50px" onclick="testando.texto('test', 1)">1</button>
-	<button style="width: 50px" onclick="testando.texto('test', 2)">2</button>
-	<button style="width: 50px" onclick="testando.texto('test', 3)">3</button>
-	<button style="width: 50px" onclick="testando.operation('test', '*')">*</button>
-	<p></p>
-	<button style="width: 50px" onclick="testando.texto('test', 0)">0</button>
-	<button style="width: 104px" onclick="testando.result('test')">=</button>
-	<button style="width: 50px" onclick="testando.operation('test', '/')">/</button>
 
-	<p></p>
-	<p></p>
-	<button onclick="testando.atual == 1 ? testando.atual = 2 : testando.atual = 1">atual</button>
-	<button onclick="testando.destroy();document.getElementById('test').value = 0">destroy</button>
+<body class="grid-container">
+	<div>
+		<input style="width: 209px;text-align: right;" type="text" name="test" id="test" value=0 disabled>
+		<p></p>
+		<button onclick="testando.texto('test', 7)">7</button>
+		<button onclick="testando.texto('test', 8)">8</button>
+		<button onclick="testando.texto('test', 9)">9</button>
+		<button onclick="testando.operation('test', '+')">+</button>
+		<p></p>
+		<button onclick="testando.texto('test', 4)">4</button>
+		<button onclick="testando.texto('test', 5)">5</button>
+		<button onclick="testando.texto('test', 6)">6</button>
+		<button onclick="testando.operation('test', '-')">-</button>
+		<p></p>
+		<button onclick="testando.texto('test', 1)">1</button>
+		<button onclick="testando.texto('test', 2)">2</button>
+		<button onclick="testando.texto('test', 3)">3</button>
+		<button onclick="testando.operation('test', '*')">*</button>
+		<p></p>
+		<button onclick="testando.texto('test', 0)">0</button>
+		<button style="width: 104px" onclick="testando.result('test')">=</button>
+		<button onclick="testando.operation('test', '/')">/</button>
 
+		<p></p>
+		<p></p>
+		<button onclick="testando.atual == 1 ? testando.atual = 2 : testando.atual = 1">atual</button>
+		<button onclick="testando.destroy();document.getElementById('test').value = 0">destroy</button>
+	</div>
+	<div>
+		<input style="width: 209px;text-align: right;" type="text" name="calcV2" id="calcV2" value=0 disabled>
+		<p></p>
+		<button onclick="calcV2.action(event)" value=7>7</button>
+		<button onclick="calcV2.action(event)" value=8>8</button>
+		<button onclick="calcV2.action(event)" value=9>9</button>
+		<button onclick="calcV2.action(event)" value="+" name="operation">+</button>
+		<p></p>
+		<button onclick="calcV2.action(event)" value=4>4</button>
+		<button onclick="calcV2.action(event)" value=5>5</button>
+		<button onclick="calcV2.action(event)" value=6>6</button>
+		<button onclick="calcV2.action(event)" value="-" name="operation">-</button>
+		<p></p>
+		<button onclick="calcV2.action(event)" value=1>1</button>
+		<button onclick="calcV2.action(event)" value=2>2</button>
+		<button onclick="calcV2.action(event)" value=3>3</button>
+		<button onclick="calcV2.action(event)" value="*" name="operation">*</button>
+		<p></p>
+		<button style="width: 158px" onclick="calcV2.action(event)" value="0">0</button>
+		<button onclick="calcV2.action(event)" value="/" name="operation">/</button>
+		<p></p>
+		<button style="width: 104px" onclick="calcV2.result(event)" value=".">.</button>
+		<button style="width: 104px" onclick="calcV2.result(event)" name="equals" value="=" disabled>=</button>
+		<p></p>
+		<p></p>
+		<button onclick="calcV2.destroy();">C</button>
+	</div>
 </body>
-	<script type = "text/javascript">
-		testando = new Calculadora();
-	</script>
+<script type="text/javascript">
+	testando = new Calculadora();
+	calcV2 = new CalculadoraV2("calcV2");
+</script>
+
 </html>
