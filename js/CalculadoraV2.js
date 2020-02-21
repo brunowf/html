@@ -20,9 +20,9 @@ class CalculadoraV2 {
   }
 
   operationPress() {
+    this.enableByName('equals');
     const evValue = this.getEventValue();
-    if (this.isNull(this.op)) {
-      this.op = '-';
+    if (this.isNull(this.op) || this.isNull(this.getAux())) {
       this.exchangeValues();
     } else {
       switch (evValue) {
@@ -44,6 +44,9 @@ class CalculadoraV2 {
           break;
       }
     }
+    if (evValue != '=' && evValue != '.') {
+      this.op = this.getEventValue();
+    }
     this.disableOpButtons();
   }
 
@@ -59,17 +62,10 @@ class CalculadoraV2 {
   }
 
   disableOpButtons() {
-    const check = this.getEventValue();
     if (this.isOperation()) {
-      document.getElementsByName('operation').forEach(e => {
-        e.toggleAttribute('disabled');
-      });
+      this.disableByName('operation');
     } else {
-      document.getElementsByName('operation').forEach(e => {
-        if (e.disabled) {
-          e.toggleAttribute('disabled');
-        }
-      });
+      this.enableByName('operation');
     }
   }
 
@@ -93,6 +89,10 @@ class CalculadoraV2 {
     this.aux = '';
   }
 
+  equalsOp() {
+    //todo
+  }
+
   /**
    * Generic methods:
    */
@@ -108,6 +108,8 @@ class CalculadoraV2 {
   }
 
   destroy() {
+    this.op = '+'
+    this.disableByName('operation');
     this.value = 0;
     this.aux = 0;
     this.op = '';
@@ -128,7 +130,7 @@ class CalculadoraV2 {
   }
 
   getAux() {
-    return parseFloat(this.aux);
+    return this.isNull(this.aux) ? "" : parseFloat(this.aux);
   }
 
   getEventValue() {
@@ -143,6 +145,22 @@ class CalculadoraV2 {
       || check == '*'
       || check == '='
       || check == '.';
+  }
+
+  disableByName(name) {
+    document.getElementsByName(name).forEach(e => {
+      if(!(e.disabled)){
+        e.toggleAttribute('disabled');
+      }
+    });
+  }
+
+  enableByName(name){
+    document.getElementsByName(name).forEach(e => {
+      if(e.disabled){
+        e.toggleAttribute('disabled');
+      }
+    });
   }
 
 }
